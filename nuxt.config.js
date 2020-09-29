@@ -89,7 +89,10 @@ export default {
     }
   },
   env: {
-    VUE_APP_GOOGLE_MAPS_API_KEY: process.env.VUE_APP_GOOGLE_MAPS_API_KEY
+    VUE_APP_GOOGLE_MAPS_API_KEY:
+      process.env.NODE_ENV === "development"
+        ? process.env.VUE_APP_GOOGLE_MAPS_API_KEY
+        : "AIzaSyBg4wE12cEcuWJGQMbKNnb6m2CUTydSZSY"
   },
   router: {
     base: "/fttx-nuxt/"
