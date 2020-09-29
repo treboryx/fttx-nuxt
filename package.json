@@ -7,7 +7,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "deploy": "node publish.js"
+    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup"
   },
   "dependencies": {
     "@tailwindcss/ui": "^0.6.2",
@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@nuxtjs/dotenv": "^1.4.1",
-    "@nuxtjs/tailwindcss": "^3.0.2"
+    "@nuxtjs/tailwindcss": "^3.0.2",
+    "push-dir": "^0.4.1"
   }
 }
