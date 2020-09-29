@@ -14,7 +14,6 @@
     "animated-number-vue": "^1.0.0",
     "axios": "^0.20.0",
     "core-js": "^3.6.5",
-    "gh-pages": "^3.1.0",
     "marker-clusterer-plus": "^2.1.4",
     "nuxt": "^2.14.5",
     "vue-browser-geolocation": "^1.8.0",
