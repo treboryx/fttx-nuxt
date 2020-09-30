@@ -17,9 +17,9 @@
                   to="/"
                   :class="[
                     this.$route.name == 'index' ? 'text-white bg-gray-900' : '',
-                    'text-gray-300'
+                    'text-gray-300',
                   ]"
-                  @click.prevent="currentPage('map')"
+                  @click.prevent="currentPage('index')"
                   class="px-3 py-2 rounded-md text-sm font-medium focus:outline-none focus:text-white focus:bg-gray-700"
                   ><i class="fas fa-map-marked-alt"></i> Map</nuxt-link
                 >
@@ -27,7 +27,7 @@
                   to="/add"
                   :class="[
                     this.$route.name == 'add' ? 'text-white bg-gray-900' : '',
-                    'text-gray-300'
+                    'text-gray-300',
                   ]"
                   @click.prevent="currentPage('add')"
                   class="ml-4 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
@@ -64,7 +64,7 @@
               </button>
             </div>
           </div> -->
-          <div class="-mr-2 flex md:hidden" style="z-index: 9999;">
+          <div class="-mr-2 flex md:hidden" style="z-index: 9999">
             <!-- Mobile menu button -->
             <button
               @click.prevent="hamburgerClick()"
@@ -104,36 +104,33 @@
           </div>
         </div>
       </div>
-      <div :class="hamburger ? 'block md:hidden' : 'hidden md:hidden'">
-        <div class="px-2 pt-2 pb-3 sm:px-3">
-          <a
-            href="/"
+      <div :class="hamburger ? 'block' : 'hidden'">
+        <!-- hidde hamburger whenever you navigate to another page via the menu -->
+        <div class="px-2 pt-2 pb-3 sm:px-3" @click.prevent="hamburgerClick()">
+          <nuxt-link
+            to="/"
             :class="
-              currPage == 'map' ? 'text-white bg-gray-900' : 'text-gray-300'
-            "
-            @click.prevent="
-              currentPage('map');
-              hamburgerClick();
+              this.$route.name === 'index'
+                ? 'text-white bg-gray-900'
+                : 'text-gray-300'
             "
             class="block px-3 py-2 rounded-md text-base font-medium text-white focus:outline-none focus:text-white focus:bg-gray-700"
-            >Map</a
+            ><i class="fas fa-map-marked-alt"></i> Map</nuxt-link
           >
           <nuxt-link
             to="/add"
-            :clnuxt-linkss="
-              currPage == 'add' ? 'text-white bg-gray-900' : 'text-gray-300'
-            "
-            @click.prevent="
-              currentPage('add');
-              hamburgerClick();
+            :class="
+              this.$route.name == 'add'
+                ? 'text-white bg-gray-900'
+                : 'text-gray-300'
             "
             class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-            >Add Cabinet</nuxt-link
+            ><i class="fas fa-plus-circle"></i> Add Cabinet</nuxt-link
           >
           <a
             href="https://github.com/fttx-gr"
             class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-            >GitHub</a
+            ><i class="fab fa-github"></i> GitHub</a
           >
         </div>
       </div>
@@ -150,9 +147,9 @@ export default {
       profileDropdown: false,
       vcoConfig: {
         events: ["dblclick", "click"],
-        isActive: true
+        isActive: true,
       },
-      hamburger: false
+      hamburger: false,
     };
   },
   methods: {
@@ -162,8 +159,8 @@ export default {
     hamburgerClick() {
       this.hamburger = !this.hamburger;
       this.$root.$emit("hamburgerState", this.hamburger);
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped lang="postcss">

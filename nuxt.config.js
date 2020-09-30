@@ -94,6 +94,7 @@ export default {
         ? process.env.VUE_APP_GOOGLE_MAPS_API_KEY
         : "AIzaSyBg4wE12cEcuWJGQMbKNnb6m2CUTydSZSY"
   }
+  // to be used only if the website is running with a github url
   // router: {
   //   base: "/fttx-nuxt/"
   // }

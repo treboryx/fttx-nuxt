@@ -29,7 +29,7 @@
         @click="showInfo()"
         :position="{
           lat: this.place.geometry.location.lat(),
-          lng: this.place.geometry.location.lng()
+          lng: this.place.geometry.location.lng(),
         }"
         :draggable="true"
         :icon="{ url: require('../static/img/g-marker.png') }"
@@ -55,10 +55,7 @@
       </button>
     </div>
     <div class="relative h-full w-full" v-if="!hamburger">
-      <div
-        class="absolute bottom-0 right-0 h-64 w-16"
-        style="text-align: left;"
-      >
+      <div class="absolute bottom-0 right-0 h-64 w-16" style="text-align: left">
         <button
           :disabled="!finishedLoading"
           @click="
@@ -70,9 +67,9 @@
           "
           :class="[
             buttons.ote.isOn ? 'bg-blue-300' : 'bg-blue-700',
-            finishedLoading ? '' : 'opacity-50 cursor-not-allowed'
+            finishedLoading ? '' : 'opacity-50 cursor-not-allowed',
           ]"
-          style="position: fixed; z-index: 999; bottom: 600px;"
+          style="position: fixed; z-index: 999; bottom: 600px"
           class="hover:bg-blue-500 text-white font-bold py-2 px-4 rounded"
         >
           <img :src="markerIcons.OTE" />
@@ -88,9 +85,9 @@
           "
           :class="[
             buttons.wind.isOn ? 'bg-blue-400' : 'bg-blue-500',
-            finishedLoading ? '' : 'opacity-50 cursor-not-allowed'
+            finishedLoading ? '' : 'opacity-50 cursor-not-allowed',
           ]"
-          style="position: fixed; z-index: 999; bottom: 550px;"
+          style="position: fixed; z-index: 999; bottom: 550px"
           class="hover:bg-blue-400 text-white font-bold py-2 px-4 rounded"
         >
           <img :src="markerIcons.WIND" />
@@ -106,9 +103,9 @@
           "
           :class="[
             buttons.vf.isOn ? 'bg-red-300' : 'bg-red-700',
-            finishedLoading ? '' : 'opacity-50 cursor-not-allowed'
+            finishedLoading ? '' : 'opacity-50 cursor-not-allowed',
           ]"
-          style="position: fixed; z-index: 999; bottom: 500px;"
+          style="position: fixed; z-index: 999; bottom: 500px"
           class="hover:bg-red-500 text-white font-bold py-2 px-4 rounded"
         >
           <img :src="markerIcons.Vodafone" />
@@ -124,9 +121,9 @@
           "
           :class="[
             buttons.rurcon.isOn ? 'bg-orange-300' : 'bg-orange-800',
-            finishedLoading ? '' : 'opacity-50 cursor-not-allowed'
+            finishedLoading ? '' : 'opacity-50 cursor-not-allowed',
           ]"
-          style="position: fixed; z-index: 999; bottom: 450px;"
+          style="position: fixed; z-index: 999; bottom: 450px"
           class="hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
         >
           <img :src="markerIcons.RURALCONNECT" />
@@ -184,10 +181,7 @@
         </div>
       </div>
     </div> -->
-    <div
-      style="position: absolute; bottom: 0px; z-index: 0;"
-      class="w-full text-base text-white"
-    >
+    <div class="w-full text-base text-white flex justify-center email">
       hello@fttx.gr
     </div>
   </div>
@@ -209,29 +203,29 @@ export default {
       map: null,
       myCoordinates: {
         lat: 37.9432,
-        lng: 23.6709
+        lng: 23.6709,
       },
       zoom: 10,
       options: {
-        styles: mapStyle
+        styles: mapStyle,
       },
       buttons: {
         ote: {
           isOn: false,
-          text: "OTE"
+          text: "OTE",
         },
         wind: {
           isOn: false,
-          text: "WIND"
+          text: "WIND",
         },
         vf: {
           isOn: false,
-          text: "Vodafone"
+          text: "Vodafone",
         },
         rurcon: {
           isOn: false,
-          text: "Rural Connect"
-        }
+          text: "Rural Connect",
+        },
       },
       numberOfCabinets: 0,
       numberOfCenters: 0,
@@ -245,7 +239,7 @@ export default {
         strokeOpacity: 0.8,
         strokeWeight: 2,
         fillColor: "#FF0000",
-        fillOpacity: 0.01
+        fillOpacity: 0.01,
       },
       markers: [],
       place: null,
@@ -258,24 +252,24 @@ export default {
         //optional: offset infowindow so it visually sits nicely on top of our marker
         pixelOffset: {
           width: 0,
-          height: -35
-        }
+          height: -35,
+        },
       },
       markerIcons: {
         Vodafone: require("../static/img/vf-marker-minified.png"),
         OTE: require("../static/img/ote-marker-minified.png"),
         WIND: require("../static/img/wind-marker-minified.png"),
-        RURALCONNECT: require("../static/img/rurcon-marker-minified.png")
+        RURALCONNECT: require("../static/img/rurcon-marker-minified.png"),
       },
       markedMarker: null,
       hamburger: false,
       finishedLoading: false,
-      cabinetQuery: null
+      cabinetQuery: null,
     };
   },
   components: {
     Loading,
-    AnimatedNumber
+    AnimatedNumber,
   },
   created() {
     // does the user have a saved center? use it instead of the default
@@ -284,10 +278,10 @@ export default {
     } else {
       // get user's coordinates from browser request
       this.$getLocation({})
-        .then(coordinates => {
+        .then((coordinates) => {
           this.myCoordinates = coordinates;
         })
-        .catch(error => alert(error));
+        .catch((error) => alert(error));
     }
 
     // does the user have a saved zoom? use it instead of the default
@@ -300,29 +294,29 @@ export default {
     let ref = this;
 
     // add the map to a data object
-    this.$refs.mapRef.$mapPromise.then(map => (this.map = map));
-    this.$root.$on("hamburgerState", state => {
+    this.$refs.mapRef.$mapPromise.then((map) => (this.map = map));
+    this.$root.$on("hamburgerState", (state) => {
       this.hamburger = state;
     });
 
     // DSLAM LOADING
     let dslam = await axios
       .get("https://api.fttx.gr/api/v1/centers?limit=0&approved=true")
-      .then(r => r);
+      .then((r) => r);
 
     this.numberOfCenters = dslam.data.data.length;
-    dslam.data.data.forEach(d => {
+    dslam.data.data.forEach((d) => {
       d.infoText = `NAME: <strong><b>${d.name}</b></strong><br>Center ID: <strong><b>${d.id}</b></strong><br>Center Database ID: ${d._id}`;
       const marker = new google.maps.Marker({
         position: d.position,
         map: this.map,
-        icon: require("../static/img/ote-marker-center-minified.png")
+        icon: require("../static/img/ote-marker-center-minified.png"),
       });
       marker.db = d;
       const infowindow = new google.maps.InfoWindow({
-        content: d.infoText
+        content: d.infoText,
       });
-      marker.addListener("click", function() {
+      marker.addListener("click", function () {
         this.showInfo;
         infowindow.open(this.map, marker);
       });
@@ -330,7 +324,7 @@ export default {
     });
     this.clusterMyMarkers();
     // DSLAM LOADING END -- POLYGON LOADING START
-    borders.forEach(e => {
+    borders.forEach((e) => {
       let storedPoly = new google.maps.Polygon({
         paths: e[0],
         strokeColor: "#FFF",
@@ -338,7 +332,7 @@ export default {
         strokeWeight: 2,
         fillColor: "#FFF",
         fillOpacity: 0,
-        map: this.map
+        map: this.map,
       });
       this.polygons.push(storedPoly);
       this.paths.push(e[0]);
@@ -351,46 +345,46 @@ export default {
       console.log(cabId);
       let c = await axios
         .get(`https://api.fttx.gr/api/v1/cabinets/${cabId}`)
-        .then(r => r);
+        .then((r) => r);
       c = c.data.data;
       const marker = new google.maps.Marker({
         position: c.position,
         map: this.map,
-        icon: this.markerIcons[c.isp]
+        icon: this.markerIcons[c.isp],
       });
       marker.db = c;
       ref.infoWindow(marker);
-      marker.addListener("click", function() {
+      marker.addListener("click", function () {
         ref.infoWindow(marker);
       });
       this.myCoordinates = {
         lat: c.position.lat,
-        lng: c.position.lng
+        lng: c.position.lng,
       };
       this.zoom = 17;
       this.cabinetQuery = cabId;
     }
     // cabinet query end
     // POLYGON LOADING END -- LOAD EVERYTHING ELSE BUT INVISIBLE (NOTE: This part here is what causing the initial lag spike because there's just too much data. Working on it.)
-    const initialize = async page => {
+    const initialize = async (page) => {
       const results = await axios
         .get(
           `https://api.fttx.gr/api/v1/cabinets?limit=1000&page=${page}&approved=true`
         )
-        .then(r => r);
-      const cabinets = results.data.data.filter(d => d.type !== "DSLAM");
+        .then((r) => r);
+      const cabinets = results.data.data.filter((d) => d.type !== "DSLAM");
       this.numberOfCabinets += cabinets.length;
-      cabinets.forEach(d => {
+      cabinets.forEach((d) => {
         // check if a cabinet is queried and if it's stored in cabinetQuery, exclude it from loading because it's already loaded.
         if (this.cabinetQuery && d._id === this.cabinetQuery) return;
         const marker = new google.maps.Marker({
           position: d.position,
           map: this.map,
-          icon: this.markerIcons[d.isp]
+          icon: this.markerIcons[d.isp],
         });
         marker.setVisible(false);
         marker.db = d;
-        marker.addListener("click", function() {
+        marker.addListener("click", function () {
           ref.infoWindow(marker);
         });
         this.markers.push(marker);
@@ -413,14 +407,14 @@ export default {
         ote: "OTE",
         wind: "WIND",
         vf: "Vodafone",
-        rurcon: "RURALCONNECT"
+        rurcon: "RURALCONNECT",
       };
 
       if (this.buttons[cab].isOn) {
         let temp = [];
         if (this.storedMarkers.includes(format[cab])) {
-          const c = this.markers.filter(m => m.db.isp === format[cab]);
-          c.forEach(ca => {
+          const c = this.markers.filter((m) => m.db.isp === format[cab]);
+          c.forEach((ca) => {
             temp.push(ca);
             ca.setVisible(true);
           });
@@ -429,19 +423,19 @@ export default {
             .get(
               `https://api.fttx.gr/api/v1/cabinets?isp=${format[cab]}&limit=0&approved=true`
             )
-            .then(r => r);
+            .then((r) => r);
 
           this.storedMarkers.push(format[cab]);
-          c.data.data.forEach(d => {
-            const dslams = this.markers.filter(d => d.db.type === "DSLAM");
+          c.data.data.forEach((d) => {
+            const dslams = this.markers.filter((d) => d.db.type === "DSLAM");
             let ak;
             const marker = new google.maps.Marker({
               position: d.position,
               map: this.map,
-              icon: this.markerIcons[format[cab]]
+              icon: this.markerIcons[format[cab]],
             });
             marker.db = d;
-            marker.addListener("click", function() {
+            marker.addListener("click", function () {
               ref.infoWindow(marker);
             });
             this.markers.push(marker);
@@ -453,8 +447,8 @@ export default {
         // this.clusterMyMarkers();
       }
       if (!this.buttons[cab].isOn) {
-        let c = this.markers.filter(d => d.db.isp === format[cab]);
-        c.forEach(ca => {
+        let c = this.markers.filter((d) => d.db.isp === format[cab]);
+        c.forEach((ca) => {
           ca.setVisible(false);
         });
         this.clusterMyMarkers("clear");
@@ -467,11 +461,11 @@ export default {
         this.openInfoWindow = null;
       }
       let ak;
-      this.polygons.forEach(p => {
+      this.polygons.forEach((p) => {
         if (
           google.maps.geometry.poly.containsLocation(marker.getPosition(), p)
         ) {
-          this.markers.forEach(m => {
+          this.markers.forEach((m) => {
             if (m.db.name) {
               if (
                 google.maps.geometry.poly.containsLocation(m.getPosition(), p)
@@ -498,7 +492,7 @@ export default {
         marker.db._id
       }">URL to this Cabinet</a>`;
       const infowindow = new google.maps.InfoWindow({
-        content: text
+        content: text,
       });
       infowindow.open(this.map, marker);
       this.openInfoWindow = infowindow;
@@ -506,14 +500,14 @@ export default {
     clusterMyMarkers(action = "default") {
       const clusterOptions = {
         gridSize: 40,
-        maxZoom: 15
+        maxZoom: 15,
         // styles: clusterStyle,
       };
       if (action === "default") {
         if (!this.markerCluster) {
           this.markerCluster = new MarkerClusterer(
             this.map,
-            this.markers.filter(d => d.visible === true),
+            this.markers.filter((d) => d.visible === true),
             clusterOptions
           );
         } else {
@@ -521,13 +515,13 @@ export default {
           this.markerCluster = null;
           this.markerCluster = new MarkerClusterer(
             this.map,
-            this.markers.filter(d => d.visible === true),
+            this.markers.filter((d) => d.visible === true),
             clusterOptions
           );
         }
       } else if (action === "clear") {
         this.markerCluster.removeMarkers(
-          this.markers.filter(d => d.visible === false)
+          this.markers.filter((d) => d.visible === false)
         );
       }
     },
@@ -535,7 +529,7 @@ export default {
       if (this.markedMarker) {
         const pos = {
           lat: this.markedMarker.position.lat(),
-          lng: this.markedMarker.position.lng()
+          lng: this.markedMarker.position.lng(),
         };
         localStorage.add = JSON.stringify(pos);
         this.$emit("setPage", "add");
@@ -547,7 +541,7 @@ export default {
     setPlace(place) {
       this.myCoordinates = {
         lat: place.geometry.location.lat(),
-        lng: place.geometry.location.lng()
+        lng: place.geometry.location.lng(),
       };
       this.zoom = 18;
       this.place = place;
@@ -557,9 +551,9 @@ export default {
         this.markers.push({
           position: {
             lat: this.place.geometry.location.lat(),
-            lng: this.place.geometry.location.lng()
+            lng: this.place.geometry.location.lng(),
           },
-          infoText: this.place.formatted_address
+          infoText: this.place.formatted_address,
         });
         this.place = null;
       }
@@ -577,7 +571,7 @@ export default {
       // get center and zoom level, store in localstorage
       let center = {
         lat: this.map.getCenter().lat(),
-        lng: this.map.getCenter().lng()
+        lng: this.map.getCenter().lng(),
       };
       let zoom = this.map.getZoom();
 
@@ -601,7 +595,7 @@ export default {
     showInfo() {
       const position = {
         lat: this.place.geometry.location.lat(),
-        lng: this.place.geometry.location.lng()
+        lng: this.place.geometry.location.lng(),
       };
       this.infoWindowPos = position;
       this.infoWinOpen = !this.infoWinOpen;
@@ -636,33 +630,27 @@ export default {
         cabinet.db._id
       }<br>Address of Cabinet: ${cabinet.db.address.full}</a>`;
       this.markedMarker = cabinet;
-    }
+    },
   },
   computed: {
     mapCoordinates() {
       if (!this.map) {
         return {
           lat: 0,
-          lng: 0
+          lng: 0,
         };
       }
 
       return {
-        lat: this.map
-          .getCenter()
-          .lat()
-          .toFixed(4),
-        lng: this.map
-          .getCenter()
-          .lng()
-          .toFixed(4)
+        lat: this.map.getCenter().lat().toFixed(4),
+        lng: this.map.getCenter().lng().toFixed(4),
       };
-    }
+    },
   },
   async created() {
     const ref = this;
     //
-  }
+  },
 };
 </script>
 
@@ -674,5 +662,10 @@ export default {
   position: absolute;
   top: 70px;
   z-index: 999;
+}
+.email {
+  position: absolute;
+  bottom: 0px;
+  z-index: 0;
 }
 </style>
