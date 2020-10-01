@@ -20,14 +20,6 @@ export default {
 </script>
 
 <style scoped>
-body,
-html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow: hidden;
-}
-
 .content {
   position: absolute;
   left: 0;
