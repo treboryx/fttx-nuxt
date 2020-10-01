@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="w-full bg-gray-500 h-full">
     <iframe
       style="border: none"
       width="100%"
@@ -20,7 +20,4 @@ export default {
 </script>
 
 <style scoped>
-.content {
-  position: absolute;
-}
 </style>
