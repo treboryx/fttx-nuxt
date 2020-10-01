@@ -1,9 +1,9 @@
 <template>
-  <div class="w-full bg-gray-500 h-full">
+  <div class="w-full h-full absolute">
     <iframe
-      style="border: none"
       width="100%"
       height="100%"
+      frameborder="0"
       src="http://fttx.speedtestcustom.com"
     ></iframe>
   </div>
