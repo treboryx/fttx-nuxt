@@ -33,6 +33,17 @@
                   class="ml-4 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                   ><i class="fas fa-plus-circle"></i> Add Cabinet</nuxt-link
                 >
+                <nuxt-link
+                  to="/speed"
+                  :class="[
+                    this.$route.name == 'speed' ? 'text-white bg-gray-900' : '',
+                    'text-gray-300',
+                  ]"
+                  @click.prevent="currentPage('speed')"
+                  class="ml-4 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                  ><i class="fas fa-tachometer-alt"></i> Test Your
+                  Speed</nuxt-link
+                >
                 <a
                   href="https://github.com/fttx-gr"
                   class="text-gray-300 ml-4 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
