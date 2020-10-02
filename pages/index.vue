@@ -148,18 +148,22 @@
         </div>
       </div>
     </div>-->
-    <!-- <div
+    <div
       class="rounded relative h-48 w-36 left-2 invisible lg:visible xl:visible"
-      style="position: relative; top: 250px; z-index: 999;"
+      style="position: relative; top: 250px; z-index: 999"
     >
       <div
-        class="rounded bg-white shadow-md h-48 w-36 p-6 flex flex-col justify-around"
+        class="rounded bg-white shadow-md h-48 w-36 p-6 flex flex-col justify-around justify-items-center"
       >
         <div>
-          <p class="text-base text-gray-600">Cabinets</p>
+          <p class="text-base text-gray-600 flex justify-center items-center">
+            Cabinets
+          </p>
         </div>
         <div>
-          <p class="text-2xl text-gray-700 font-bold">
+          <p
+            class="text-2xl text-gray-700 font-bold flex justify-center items-center"
+          >
             <animated-number
               :value="numberOfCabinets"
               :duration="3000"
@@ -167,11 +171,16 @@
             />
           </p>
         </div>
+
         <div>
-          <p class="text-base text-gray-600">Centers</p>
+          <p class="text-base text-gray-600 flex justify-center items-center">
+            Centers
+          </p>
         </div>
         <div>
-          <p class="text-2xl text-gray-700 font-bold">
+          <p
+            class="text-2xl text-gray-700 font-bold flex justify-center items-center"
+          >
             <animated-number
               :value="numberOfCenters"
               :duration="5000"
@@ -180,7 +189,7 @@
           </p>
         </div>
       </div>
-    </div> -->
+    </div>
     <div class="w-full text-base text-white flex justify-center email">
       hello@fttx.gr
     </div>
