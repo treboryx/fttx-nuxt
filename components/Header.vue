@@ -139,7 +139,7 @@
             ><i class="fas fa-plus-circle"></i> Add Cabinet</nuxt-link
           >
           <nuxt-link
-            to="/speed"
+            to="/speed/"
             :class="[
               this.$route.name == 'speed' ? 'text-white bg-gray-900' : '',
               'text-gray-300',
