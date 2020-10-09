@@ -352,7 +352,6 @@ export default {
       const cabQuery = "cabinet?id=";
       if (window.location.href.includes(cabQuery)) {
         const cabId = window.location.href.split(cabQuery)[1];
-        console.log(cabId);
         let c = await axios
           .get(`https://api.fttx.gr/api/v1/cabinets/${cabId}`)
           .then(r => r);
@@ -384,7 +383,6 @@ export default {
           `https://api.fttx.gr/api/v1/cabinets?limit=1000&page=${page}&approved=true`
         )
         .then(r => r);
-      console.log(results);
       const cabinets = results.data.data.filter(d => d.type !== "DSLAM");
       this.numberOfCabinets += cabinets.length;
       cabinets.forEach(d => {
