@@ -10,10 +10,9 @@
     "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.12.2",
-    "@nuxtjs/proxy": "^2.0.1",
     "@tailwindcss/ui": "^0.6.2",
     "animated-number-vue": "^1.0.0",
+    "axios": "^0.20.0",
     "core-js": "^3.6.5",
     "marker-clusterer-plus": "^2.1.4",
     "nuxt": "^2.14.5",

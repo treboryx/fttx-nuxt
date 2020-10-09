@@ -50,22 +50,25 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     "@nuxtjs/tailwindcss"
   ],
-  proxy: {
-    "/api": {
-      target: "https://api.fttx.gr/api",
-      // target: "http://localhost:5000/api",
-      pathRewrite: {
-        "^/api": "/"
-      }
-    }
-  },
+  // axios: {
+  //   proxy: true
+  // },
+  // proxy: {
+  //   "/api": {
+  //     target: "https://api.fttx.gr/api",
+  //     // target: "http://localhost:5000/api",
+  //     pathRewrite: {
+  //       "^/api": "/"
+  //     }
+  //   }
+  // },
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     "@nuxtjs/dotenv",
-    "vue-toastification/nuxt",
-    "@nuxtjs/axios",
-    "@nuxtjs/proxy"
+    "vue-toastification/nuxt"
+    // "@nuxtjs/axios",
+    // "@nuxtjs/proxy"
   ],
   toast: {
     transition: "Vue-Toastification__bounce",

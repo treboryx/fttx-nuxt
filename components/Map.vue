@@ -309,7 +309,7 @@ export default {
 
     // DSLAM LOADING
     let dslam = await axios
-      .get("/api/v1/centers?limit=0&approved=true")
+      .get("https://api.fttx.gr/api/v1/centers?limit=0&approved=true")
       .then(r => r);
 
     this.numberOfCenters = dslam.data.data.length;
@@ -353,7 +353,9 @@ export default {
       if (window.location.href.includes(cabQuery)) {
         const cabId = window.location.href.split(cabQuery)[1];
         console.log(cabId);
-        let c = await axios.get(`/api/v1/cabinets/${cabId}`).then(r => r);
+        let c = await axios
+          .get(`https://api.fttx.gr/api/v1/cabinets/${cabId}`)
+          .then(r => r);
         c = c.data.data;
         const marker = new google.maps.Marker({
           position: c.position,
@@ -378,7 +380,9 @@ export default {
     // POLYGON LOADING END -- LOAD EVERYTHING ELSE BUT INVISIBLE (NOTE: This part here is what causing the initial lag spike because there's just too much data. Working on it.)
     const initialize = async page => {
       const results = await axios
-        .get(`/api/v1/cabinets?limit=1000&page=${page}&approved=true`)
+        .get(
+          `https://api.fttx.gr/api/v1/cabinets?limit=1000&page=${page}&approved=true`
+        )
         .then(r => r);
       console.log(results);
       const cabinets = results.data.data.filter(d => d.type !== "DSLAM");
@@ -429,7 +433,9 @@ export default {
           });
         } else {
           let c = await axios
-            .get(`/api/v1/cabinets?isp=${format[cab]}&limit=0&approved=true`)
+            .get(
+              `https://api.fttx.gr/api/v1/cabinets?isp=${format[cab]}&limit=0&approved=true`
+            )
             .then(r => r);
 
           this.storedMarkers.push(format[cab]);
