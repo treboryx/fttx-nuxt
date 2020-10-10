@@ -1,7 +1,5 @@
 <template>
-  <keep-alive>
-    <Map />
-  </keep-alive>
+  <Map />
 </template>
 
 <script>
