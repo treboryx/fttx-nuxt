@@ -20,7 +20,7 @@
                     'text-gray-300'
                   ]"
                   @click.prevent="currentPage('index')"
-                  class="px-3 py-2 rounded-md text-sm font-medium focus:outline-none focus:text-white focus:bg-gray-700"
+                  class="px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                   ><i class="fas fa-map-marked-alt"></i> Map</nuxt-link
                 >
                 <nuxt-link
@@ -164,7 +164,7 @@ export default {
   name: "Header",
   data() {
     return {
-      currPage: "map",
+      currPage: this.$route.path === "/" ? "map" : "",
       profileDropdown: false,
       vcoConfig: {
         events: ["dblclick", "click"],
