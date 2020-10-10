@@ -45,14 +45,16 @@
         @place_changed="setPlace"
       ></gmap-autocomplete>
       <!-- Hidden till it's functional -->
-      <button
-        :disabled="!markedMarker"
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ml-2"
-        :class="[markedMarker ? '' : 'opacity-50 cursor-not-allowed']"
-        @click="addButton"
+      <nuxt-link to="/add">
+        <button
+          :disabled="!markedMarker"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ml-2"
+          :class="[markedMarker ? '' : 'opacity-50 cursor-not-allowed']"
+          @click="addButton"
+        >
+          Add
+        </button></nuxt-link
       >
-        Add
-      </button>
     </div>
     <div class="relative h-full w-full" v-if="!hamburger">
       <div class="absolute bottom-0 right-0 h-64 w-16" style="text-align: left">
@@ -547,7 +549,6 @@ export default {
           lng: this.markedMarker.position.lng()
         };
         localStorage.add = JSON.stringify(pos);
-        this.$emit("setPage", "add");
       }
     },
     setDescription(description) {
