@@ -67,7 +67,7 @@ export default {
   modules: [
     "@nuxtjs/dotenv",
     "vue-toastification/nuxt"
-    // "@nuxtjs/axios",
+    // "@nuxtjs/axios"
     // "@nuxtjs/proxy"
   ],
   toast: {

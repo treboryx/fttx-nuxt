@@ -1,5 +1,7 @@
 <template>
-  <Map />  
+  <keep-alive>
+    <Map />
+  </keep-alive>
 </template>
 
 <script>
@@ -8,5 +10,5 @@ export default {
   components: {
     Map
   }
-}
+};
 </script>
