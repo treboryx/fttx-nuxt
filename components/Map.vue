@@ -504,10 +504,10 @@ export default {
       }</strong></b><br>Cabinet Database ID: ${marker.db._id}
       ${
         marker.db._img_url
-          ? `<br><a style="font-weight: bold; color: purple;" target="_blank" href="${marker.db.img_url}">Click Here for image</a><br>`
+          ? `<br><a style="font-weight: bold; color: purple;" target="_blank" href="${marker.db.img_url}">Click Here for image</a>`
           : ""
       }
-      <a style="font-weight: bold; color: purple;" target="_blank" href="https://fttx.gr/cabinet?id=${
+      <br><a style="font-weight: bold; color: purple;" target="_blank" href="https://fttx.gr/cabinet?id=${
         marker.db._id
       }">URL to this Cabinet</a>`;
       const infowindow = new google.maps.InfoWindow({
