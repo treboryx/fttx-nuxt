@@ -17,7 +17,7 @@
     "marker-clusterer-plus": "^2.1.4",
     "nuxt": "^2.14.5",
     "vue-browser-geolocation": "^1.8.0",
-    "vue-loading-overlay": "^3.4.1",
+    "vue-loading-overlay": "^3.4.2",
     "vue-toastification": "^1.7.8",
     "vue2-google-maps": "^0.10.7"
   },
