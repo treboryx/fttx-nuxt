@@ -106,7 +106,9 @@ export default {
   //     }
   //   }
   // },
-
+  sitemap: {
+    hostname: "https://fttx.gr"
+  },
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: ["@nuxtjs/dotenv", "vue-toastification/nuxt", "@nuxtjs/sitemap"],
   toast: {
