@@ -206,7 +206,7 @@ import { clusterStyle, mapStyle } from "../static/options";
 import borders from "../static/borders";
 
 export default {
-  props: ["dslam", "cabinetData"],
+  props: ["dslam", "cabinetData", "numberOfCenters", "numberOfCabinets"],
   data() {
     return {
       isLoading: false,
