@@ -4,7 +4,7 @@
     <GmapMap
       :center="myCoordinates"
       :zoom="zoom"
-      class="w-full bg-gray-500 h-full"
+      class="w-full h-full bg-gray-500"
       ref="mapRef"
       :options="options"
       @dragend="handleDrag"
@@ -38,17 +38,17 @@
       <gmap-polygon :options="polygonOptions" :paths="paths"></gmap-polygon>
     </GmapMap>
     <!-- "top: 0; right: 0; width: calc(100% - 100px); position: absolute; z-index: 100" -->
-    <div v-if="!hamburger" class="w-full flex justify-center autocomplete">
+    <div v-if="!hamburger" class="flex justify-center w-full autocomplete">
       <gmap-autocomplete
         placeholder="Type an address Ex. Filellinon 10, Athens, Greece"
-        class="shadow appearance-none border rounded lg:w-2/6 xl:w-2/6 md:w-2/4 sm:w-3/4 w-3/4 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        class="w-3/4 px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none lg:w-2/6 xl:w-2/6 md:w-2/4 sm:w-3/4 focus:outline-none focus:shadow-outline"
         @place_changed="setPlace"
       ></gmap-autocomplete>
       <!-- Hidden till it's functional -->
       <nuxt-link to="/add">
         <button
           :disabled="!markedMarker"
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ml-2"
+          class="px-4 py-2 ml-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
           :class="[markedMarker ? '' : 'opacity-50 cursor-not-allowed']"
           @click="addButton"
         >
@@ -56,8 +56,8 @@
         </button></nuxt-link
       >
     </div>
-    <div class="relative h-full w-full" v-if="!hamburger">
-      <div class="absolute bottom-0 right-0 h-64 w-16" style="text-align: left">
+    <div class="relative w-full h-full" v-if="!hamburger">
+      <div class="absolute bottom-0 right-0 w-16 h-64" style="text-align: left">
         <button
           :disabled="!finishedLoading"
           @click="
@@ -72,7 +72,7 @@
             finishedLoading ? '' : 'opacity-50 cursor-not-allowed'
           ]"
           style="position: fixed; z-index: 999; bottom: 600px"
-          class="hover:bg-blue-500 text-white font-bold py-2 px-4 rounded"
+          class="px-4 py-2 font-bold text-white rounded hover:bg-blue-500"
         >
           <img :src="markerIcons.OTE" />
         </button>
@@ -90,7 +90,7 @@
             finishedLoading ? '' : 'opacity-50 cursor-not-allowed'
           ]"
           style="position: fixed; z-index: 999; bottom: 550px"
-          class="hover:bg-blue-400 text-white font-bold py-2 px-4 rounded"
+          class="px-4 py-2 font-bold text-white rounded hover:bg-blue-400"
         >
           <img :src="markerIcons.WIND" />
         </button>
@@ -108,7 +108,7 @@
             finishedLoading ? '' : 'opacity-50 cursor-not-allowed'
           ]"
           style="position: fixed; z-index: 999; bottom: 500px"
-          class="hover:bg-red-500 text-white font-bold py-2 px-4 rounded"
+          class="px-4 py-2 font-bold text-white rounded hover:bg-red-500"
         >
           <img :src="markerIcons.Vodafone" />
         </button>
@@ -126,7 +126,7 @@
             finishedLoading ? '' : 'opacity-50 cursor-not-allowed'
           ]"
           style="position: fixed; z-index: 999; bottom: 450px"
-          class="hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
+          class="px-4 py-2 font-bold text-white rounded hover:bg-orange-700"
         >
           <img :src="markerIcons.RURALCONNECT" />
         </button>
@@ -151,20 +151,20 @@
       </div>
     </div>-->
     <div
-      class="rounded relative h-48 w-36 left-2 invisible lg:visible xl:visible"
+      class="relative invisible h-48 rounded w-36 left-2 lg:visible xl:visible"
       style="position: relative; top: 250px; z-index: 999;"
     >
       <div
-        class="rounded bg-white shadow-md h-48 w-36 p-6 flex flex-col justify-around justify-items-center"
+        class="flex flex-col justify-around h-48 p-6 bg-white rounded shadow-md w-36 justify-items-center"
       >
         <div>
-          <p class="text-base text-gray-600 flex justify-center items-center">
+          <p class="flex items-center justify-center text-base text-gray-600">
             Cabinets
           </p>
         </div>
         <div>
           <p
-            class="text-2xl text-gray-700 font-bold flex justify-center items-center"
+            class="flex items-center justify-center text-2xl font-bold text-gray-700"
           >
             <animated-number
               :value="numberOfCabinets"
@@ -174,13 +174,13 @@
           </p>
         </div>
         <div>
-          <p class="text-base text-gray-600 flex justify-center items-center">
+          <p class="flex items-center justify-center text-base text-gray-600">
             Centers
           </p>
         </div>
         <div>
           <p
-            class="text-2xl text-gray-700 font-bold flex justify-center items-center"
+            class="flex items-center justify-center text-2xl font-bold text-gray-700"
           >
             <animated-number
               :value="numberOfCenters"
@@ -191,7 +191,7 @@
         </div>
       </div>
     </div>
-    <div class="w-full text-base text-white flex justify-center email">
+    <div class="flex justify-center w-full text-base text-white email">
       hello@fttx.gr
     </div>
   </div>
@@ -206,6 +206,7 @@ import { clusterStyle, mapStyle } from "../static/options";
 import borders from "../static/borders";
 
 export default {
+  props: ["dslam", "cabinetData"],
   data() {
     return {
       isLoading: false,
@@ -274,35 +275,12 @@ export default {
       markedMarker: null,
       hamburger: false,
       finishedLoading: false,
-      cabinetQuery: null,
-      dslam: null,
-      cabinetData: null
+      cabinetQuery: null
     };
   },
   components: {
     Loading,
     AnimatedNumber
-  },
-  // SSR LOADING
-  async fetch() {
-    // DSLAM LOADING
-    let dslam = await axios
-      .get("https://api.fttx.gr/api/v1/centers?limit=0&approved=true")
-      .then(r => r);
-
-    this.dslam = dslam.data.data;
-    this.numberOfCenters = dslam.data.data.length;
-
-    // CABINET LOADING
-    const initialize = async () => {
-      const results = await axios
-        .get(`https://api.fttx.gr/api/v1/cabinets?limit=0&approved=true`)
-        .then(r => r);
-      const cabinets = results.data.data.filter(d => d.type !== "DSLAM");
-      this.numberOfCabinets = cabinets.length;
-      this.cabinetData = cabinets;
-    };
-    await initialize();
   },
   created() {
     // does the user have a saved center? use it instead of the default
@@ -332,34 +310,6 @@ export default {
       this.hamburger = state;
     });
 
-    // cabinet query start
-    if (process.client) {
-      const cabQuery = "cabinet?id=";
-      if (window.location.href.includes(cabQuery)) {
-        const cabId = window.location.href.split(cabQuery)[1];
-        let c = await axios
-          .get(`https://api.fttx.gr/api/v1/cabinets/${cabId}`)
-          .then(r => r);
-        c = c.data.data;
-        const marker = new google.maps.Marker({
-          position: c.position,
-          map: this.map,
-          icon: this.markerIcons[c.isp]
-        });
-        marker.db = c;
-        ref.infoWindow(marker);
-        marker.addListener("click", function() {
-          ref.infoWindow(marker);
-        });
-        this.myCoordinates = {
-          lat: c.position.lat,
-          lng: c.position.lng
-        };
-        this.zoom = 17;
-        this.cabinetQuery = cabId;
-      }
-    }
-    // cabinet query end
     this.dslam.forEach(d => {
       d.infoText = `NAME: <strong><b>${d.name}</b></strong><br>Center ID: <strong><b>${d.id}</b></strong><br>Center Database ID: ${d._id}`;
       const marker = new google.maps.Marker({
@@ -392,6 +342,35 @@ export default {
       this.polygons.push(storedPoly);
       this.paths.push(e[0]);
     });
+
+    // cabinet query start
+    if (process.client) {
+      const cabQuery = "cabinet?id=";
+      if (window.location.href.includes(cabQuery)) {
+        const cabId = window.location.href.split(cabQuery)[1];
+        let c = await axios
+          .get(`https://api.fttx.gr/api/v1/cabinets/${cabId}`)
+          .then(r => r);
+        c = c.data.data;
+        const marker = new google.maps.Marker({
+          position: c.position,
+          map: this.map,
+          icon: this.markerIcons[c.isp]
+        });
+        marker.db = c;
+        ref.infoWindow(marker);
+        marker.addListener("click", function() {
+          ref.infoWindow(marker);
+        });
+        this.myCoordinates = {
+          lat: c.position.lat,
+          lng: c.position.lng
+        };
+        this.zoom = 17;
+        this.cabinetQuery = cabId;
+      }
+    }
+    // cabinet query end
     this.isLoading = false;
     // POLYGON LOADING END -- LOAD EVERYTHING ELSE BUT INVISIBLE (NOTE: This part here is what causing the initial lag spike because there's just too much data. Working on it.)
 
@@ -472,7 +451,7 @@ export default {
         this.$toast.warning(`Unloaded ${format[cab]} cabinets`);
       }
     },
-    infoWindow(marker) {
+    async infoWindow(marker) {
       if (this.openInfoWindow) {
         this.openInfoWindow.close();
         this.openInfoWindow = null;

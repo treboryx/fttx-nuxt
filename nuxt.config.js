@@ -1,10 +1,12 @@
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
-  target: "static",
+  ssr: true,
+
+  target: "server",
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: "FTTx.gr - Cabinets all around Greece!",
+    title: "FTTx.gr — Cabinets all around Greece!",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -22,14 +24,53 @@ export default {
         name: "author",
         content: "treboryx"
       },
-      { property: "og:title", content: "FTTx.gr" },
       {
+        property: "og:title",
+        content: "FTTx.gr — Cabinets Map in Greece"
+      },
+      {
+        hid: "og:description",
         property: "og:description",
         content: "FTTx Cabinets Map. Έλεγχος διαθεσιμότητας VDSL"
       },
       {
         property: "og:url",
         content: "https://fttx.gr"
+      },
+      {
+        hid: "twitter:title",
+        name: "twitter:title",
+        content: "FTTx.gr — Cabinets Map in Greece"
+      },
+      {
+        hid: "twitter:description",
+        name: "twitter:description",
+        content: "FTTx Cabinets Map. Έλεγχος διαθεσιμότητας VDSL"
+      },
+      {
+        hid: "twitter:image",
+        name: "twitter:image",
+        content: "https://fttx.gr/logo.png"
+      },
+      {
+        hid: "twitter:image:alt",
+        name: "twitter:image:alt",
+        content: "https://fttx.gr/logo.png"
+      },
+      {
+        hid: "og:image",
+        property: "og:image",
+        content: "https://fttx.gr/logo.png"
+      },
+      {
+        hid: "og:image:secure_url",
+        property: "og:image:secure_url",
+        content: "https://fttx.gr/logo.png"
+      },
+      {
+        hid: "og:image:alt",
+        property: "og:image:alt",
+        content: "https://fttx.gr/logo.png"
       }
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
@@ -40,7 +81,10 @@ export default {
   css: [],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ["@/plugins/google-maps", { src: "~plugins/ga.js", mode: "client" }],
+  plugins: [
+    { src: "@/plugins/google-maps" },
+    { src: "~plugins/ga.js", mode: "client" }
+  ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -64,12 +108,7 @@ export default {
   // },
 
   // Modules (https://go.nuxtjs.dev/config-modules)
-  modules: [
-    "@nuxtjs/dotenv",
-    "vue-toastification/nuxt"
-    // "@nuxtjs/axios"
-    // "@nuxtjs/proxy"
-  ],
+  modules: ["@nuxtjs/dotenv", "vue-toastification/nuxt", "@nuxtjs/sitemap"],
   toast: {
     transition: "Vue-Toastification__bounce",
     maxToasts: 3,
@@ -103,7 +142,8 @@ export default {
           grid: true
         }
       }
-    }
+    },
+    transpile: [/^vue2-google-maps($|\/)/]
   },
   env: {
     VUE_APP_GOOGLE_MAPS_API_KEY:
