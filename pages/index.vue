@@ -1,5 +1,10 @@
 <template>
-  <Map :cabinetData="cabinetData" :dslam="dslam" />
+  <Map
+    :cabinetData="cabinetData"
+    :dslam="dslam"
+    :numberOfCabinets="numberofCabinets"
+    :numberOfCenters="numberofCenters"
+  />
 </template>
 
 <script>

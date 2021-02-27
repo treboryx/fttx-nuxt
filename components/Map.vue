@@ -238,8 +238,6 @@ export default {
           text: "Rural Connect"
         }
       },
-      numberOfCabinets: 0,
-      numberOfCenters: 0,
       storedMarkers: [],
       markerCluster: null,
       debugging: true,

@@ -1,5 +1,10 @@
 <template>
-  <Map :cabinetData="cabinetData" :dslam="dslam" />
+  <Map
+    :cabinetData="cabinetData"
+    :dslam="dslam"
+    :numberOfCabinets="numberofCabinets"
+    :numberOfCenters="numberofCenters"
+  />
 </template>
 
 <script>
@@ -24,7 +29,7 @@ export default {
 
     return {
       dslam: dslam.data.data,
-      numberOfCenter: dslam.data.data.length,
+      numberOfCenters: dslam.data.data.length,
       numberOfCabinets: cabinets.length,
       cabinetData: cabinets
     };
