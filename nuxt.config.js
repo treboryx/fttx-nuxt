@@ -13,78 +13,78 @@ export default {
       {
         hid: "description",
         name: "description",
-        content: "FTTx Cabinets Map. Έλεγχος διαθεσιμότητας VDSL"
+        content: "FTTx Cabinets Map. Έλεγχος διαθεσιμότητας VDSL",
       },
       {
         name: "keywords",
         content:
-          "fttx, fttc, ftth, greece, athens, OTE, WIND, Vodafone, Rural Connect, Έλεγχος διαθεσιμότητας VDSL Ελλάδα"
+          "fttx, fttc, ftth, greece, athens, OTE, WIND, Vodafone, Rural Connect, Έλεγχος διαθεσιμότητας VDSL Ελλάδα",
       },
       {
         name: "author",
-        content: "treboryx"
+        content: "treboryx",
       },
       {
         property: "og:title",
-        content: "FTTx.gr — Cabinets Map in Greece"
+        content: "FTTx.gr — Cabinets Map in Greece",
       },
       {
         hid: "og:description",
         property: "og:description",
-        content: "FTTx Cabinets Map. Έλεγχος διαθεσιμότητας VDSL"
+        content: "FTTx Cabinets Map. Έλεγχος διαθεσιμότητας VDSL",
       },
       {
         property: "og:url",
-        content: "https://fttx.gr"
+        content: "https://fttx.gr",
       },
       {
         property: "og:site_name",
-        content: "FTTx"
+        content: "FTTx",
       },
       {
         hid: "twitter:title",
         name: "twitter:title",
-        content: "FTTx.gr — Cabinets Map in Greece"
+        content: "FTTx.gr — Cabinets Map in Greece",
       },
       {
         hid: "twitter:description",
         name: "twitter:description",
-        content: "FTTx Cabinets Map. Έλεγχος διαθεσιμότητας VDSL"
+        content: "FTTx Cabinets Map. Έλεγχος διαθεσιμότητας VDSL",
       },
       {
         hid: "twitter:image",
         name: "twitter:image",
-        content: "https://fttx.gr/img/fttx-logo.png"
+        content: "https://fttx.gr/img/fttx-logo.png",
       },
       {
         hid: "twitter:image:alt",
         name: "twitter:image:alt",
-        content: "https://fttx.gr/img/fttx-logo.png"
+        content: "https://fttx.gr/img/fttx-logo.png",
       },
       {
         hid: "og:image",
         property: "og:image",
-        content: "https://fttx.gr/img/fttx-logo.png"
+        content: "https://fttx.gr/img/fttx-logo.png",
       },
       {
         hid: "og:image:secure_url",
         property: "og:image:secure_url",
-        content: "https://fttx.gr/img/fttx-logo.png"
+        content: "https://fttx.gr/img/fttx-logo.png",
       },
       {
         hid: "og:image:alt",
         property: "og:image:alt",
-        content: "https://fttx.gr/img/fttx-logo.png"
+        content: "https://fttx.gr/img/fttx-logo.png",
       },
       {
         hid: "keywords",
         name: "keywords",
         content:
-          "adsl, vdsl, greece, cabinet, fttc, ftth, fttx, vodafone, vodafone greece, wind, ote, cosmote, rural connect, vodafone greece, vf-gr, Έλεγχος διαθεσιμότητας VDSL, οπτικές ίνες"
-      }
+          "adsl, vdsl, greece, cabinet, fttc, ftth, fttx, vodafone, vodafone greece, wind, ote, cosmote, rural connect, vodafone greece, vf-gr, Έλεγχος διαθεσιμότητας VDSL, οπτικές ίνες",
+      },
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
-    script: [{ src: "https://kit.fontawesome.com/7dfe1f2920.js" }]
+    script: [{ src: "https://kit.fontawesome.com/7dfe1f2920.js" }],
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
@@ -93,7 +93,7 @@ export default {
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
     { src: "@/plugins/google-maps" },
-    { src: "~plugins/ga.js", mode: "client" }
+    { src: "~plugins/ga.js", mode: "client" },
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -102,11 +102,11 @@ export default {
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
-    "@nuxtjs/tailwindcss"
+    "@nuxtjs/tailwindcss",
   ],
 
   sitemap: {
-    hostname: "https://fttx.gr"
+    hostname: "https://fttx.gr",
   },
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: ["@nuxtjs/dotenv", "vue-toastification/nuxt", "@nuxtjs/sitemap"],
@@ -125,33 +125,16 @@ export default {
     hideProgressBar: false,
     closeButton: "button",
     icon: true,
-    rtl: false
+    rtl: false,
   },
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {
-    postcss: {
-      // Add plugin names as key and arguments as value
-      // Install them before as dependencies with npm or yarn
-      plugins: {
-        // Disable a plugin by passing false as value
-        tailwindcss: {},
-        autoprefixer: {}
-      },
-      preset: {
-        // Change the postcss-preset-env settings
-        autoprefixer: {
-          grid: true
-        }
-      }
-    },
-    transpile: [/^vue2-google-maps($|\/)/]
-  },
+  build: {},
   env: {
     VUE_APP_GOOGLE_MAPS_API_KEY:
       process.env.NODE_ENV === "development"
         ? process.env.VUE_APP_GOOGLE_MAPS_API_KEY
-        : "AIzaSyBg4wE12cEcuWJGQMbKNnb6m2CUTydSZSY"
-  }
+        : "AIzaSyBg4wE12cEcuWJGQMbKNnb6m2CUTydSZSY",
+  },
   // to be used only if the website is running with a github url
   // router: {
   //   base: "/fttx-nuxt/"
