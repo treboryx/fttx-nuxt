@@ -4,7 +4,7 @@
       width="100%"
       height="100%"
       frameborder="0"
-      src="http://fttx.speedtestcustom.com"
+      src="https://fttx.speedtestcustom.com"
     ></iframe>
   </div>
 </template>
@@ -13,11 +13,10 @@
 export default {
   head() {
     return {
-      title: "FTTx.gr - Speedtest",
+      title: "FTTx.gr - Speedtest"
     };
-  },
+  }
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

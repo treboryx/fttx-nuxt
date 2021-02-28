@@ -8,24 +8,24 @@ import axios from "axios";
 
 export default {
   components: {
-    Map,
+    Map
   },
   async asyncData() {
     // DSLAM LOADING
     let dslam = await axios
       .get("https://api.fttx.gr/api/v1/centers?limit=0&approved=true")
-      .then((r) => r);
+      .then(r => r);
 
     // Cabinets
     const results = await axios
       .get(`https://api.fttx.gr/api/v1/cabinets?limit=0&approved=true`)
-      .then((r) => r);
-    const cabinets = results.data.data.filter((d) => d.type !== "DSLAM");
+      .then(r => r);
+    const cabinets = results.data.data.filter(d => d.type !== "DSLAM");
 
     return {
       dslam: dslam.data.data,
-      cabinetData: cabinets,
+      cabinetData: cabinets
     };
-  },
+  }
 };
 </script>

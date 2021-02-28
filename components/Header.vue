@@ -17,17 +17,17 @@
                   to="/"
                   :class="[
                     this.$route.name == 'index' ? 'text-white bg-gray-900' : '',
-                    'text-gray-300',
+                    'text-gray-300'
                   ]"
                   @click.prevent="currentPage('index')"
-                  class="px-3 py-2 rounded-md text-sm font-medium focus:outline-none focus:text-white focus:bg-gray-700"
+                  class="px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                   ><i class="fas fa-map-marked-alt"></i> Map</nuxt-link
                 >
                 <nuxt-link
                   to="/add"
                   :class="[
                     this.$route.name == 'add' ? 'text-white bg-gray-900' : '',
-                    'text-gray-300',
+                    'text-gray-300'
                   ]"
                   @click.prevent="currentPage('add')"
                   class="ml-4 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
@@ -37,7 +37,7 @@
                   to="/speed"
                   :class="[
                     this.$route.name == 'speed' ? 'text-white bg-gray-900' : '',
-                    'text-gray-300',
+                    'text-gray-300'
                   ]"
                   @click.prevent="currentPage('speed')"
                   class="ml-4 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
@@ -139,13 +139,13 @@
             ><i class="fas fa-plus-circle"></i> Add Cabinet</nuxt-link
           >
           <nuxt-link
-            to="/speed"
+            to="/speed/"
             :class="[
               this.$route.name == 'speed' ? 'text-white bg-gray-900' : '',
-              'text-gray-300',
+              'text-gray-300'
             ]"
             @click.prevent="currentPage('speed')"
-            class="ml-4 px-3 py-2 rounded-md text-sm font-medium hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+            class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
             ><i class="fas fa-tachometer-alt"></i> Test Your Speed</nuxt-link
           >
           <a
@@ -164,13 +164,13 @@ export default {
   name: "Header",
   data() {
     return {
-      currPage: "map",
+      currPage: this.$route.path === "/" ? "map" : "",
       profileDropdown: false,
       vcoConfig: {
         events: ["dblclick", "click"],
-        isActive: true,
+        isActive: true
       },
-      hamburger: false,
+      hamburger: false
     };
   },
   methods: {
@@ -180,8 +180,8 @@ export default {
     hamburgerClick() {
       this.hamburger = !this.hamburger;
       this.$root.$emit("hamburgerState", this.hamburger);
-    },
-  },
+    }
+  }
 };
 </script>
 <style scoped lang="postcss">
