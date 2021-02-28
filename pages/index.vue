@@ -1,5 +1,5 @@
 <template>
-  <Map :cabinetData="cabinetData" :dslam="dslam" />
+  <Map :dslam="dslam" />
 </template>
 
 <script>
@@ -10,22 +10,18 @@ export default {
   components: {
     Map,
   },
-  async asyncData() {
+  async fetch() {
     // DSLAM LOADING
     let dslam = await axios
       .get("https://api.fttx.gr/api/v1/centers?limit=0&approved=true")
       .then((r) => r);
 
-    // Cabinets
-    const results = await axios
-      .get(`https://api.fttx.gr/api/v1/cabinets?limit=0&approved=true`)
-      .then((r) => r);
-    const cabinets = results.data.data.filter((d) => d.type !== "DSLAM");
-
     return {
       dslam: dslam.data.data,
-      cabinetData: cabinets,
     };
+  },
+  asyncData() {
+    return fetch();
   },
 };
 </script>
