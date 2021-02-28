@@ -38,6 +38,10 @@ export default {
         content: "https://fttx.gr"
       },
       {
+        property: "og:site_name",
+        content: "FTTx"
+      },
+      {
         hid: "twitter:title",
         name: "twitter:title",
         content: "FTTx.gr — Cabinets Map in Greece"
@@ -50,27 +54,33 @@ export default {
       {
         hid: "twitter:image",
         name: "twitter:image",
-        content: "https://fttx.gr/logo.png"
+        content: "https://fttx.gr/img/fttx-logo.png"
       },
       {
         hid: "twitter:image:alt",
         name: "twitter:image:alt",
-        content: "https://fttx.gr/logo.png"
+        content: "https://fttx.gr/img/fttx-logo.png"
       },
       {
         hid: "og:image",
         property: "og:image",
-        content: "https://fttx.gr/logo.png"
+        content: "https://fttx.gr/img/fttx-logo.png"
       },
       {
         hid: "og:image:secure_url",
         property: "og:image:secure_url",
-        content: "https://fttx.gr/logo.png"
+        content: "https://fttx.gr/img/fttx-logo.png"
       },
       {
         hid: "og:image:alt",
         property: "og:image:alt",
-        content: "https://fttx.gr/logo.png"
+        content: "https://fttx.gr/img/fttx-logo.png"
+      },
+      {
+        hid: "keywords",
+        name: "keywords",
+        content:
+          "adsl, vdsl, greece, cabinet, fttc, ftth, fttx, vodafone, vodafone greece, wind, ote, cosmote, rural connect, vodafone greece, vf-gr, Έλεγχος διαθεσιμότητας VDSL, οπτικές ίνες"
       }
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],

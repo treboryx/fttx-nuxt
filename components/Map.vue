@@ -206,7 +206,7 @@ import { clusterStyle, mapStyle } from "../static/options";
 import borders from "../static/borders";
 
 export default {
-  props: ["dslam", "cabinetData", "numberOfCenters", "numberOfCabinets"],
+  props: ["dslam", "cabinetData"],
   data() {
     return {
       isLoading: false,
@@ -273,7 +273,9 @@ export default {
       markedMarker: null,
       hamburger: false,
       finishedLoading: false,
-      cabinetQuery: null
+      cabinetQuery: null,
+      numberOfCabinets: 0,
+      numberOfCenters: 0
     };
   },
   components: {
@@ -370,6 +372,8 @@ export default {
     }
     // cabinet query end
     this.isLoading = false;
+    this.numberOfCabinets = this.cabinetData.length;
+    this.numberOfCenters = this.dslam.length;
     // POLYGON LOADING END -- LOAD EVERYTHING ELSE BUT INVISIBLE (NOTE: This part here is what causing the initial lag spike because there's just too much data. Working on it.)
 
     this.cabinetData.forEach(d => {
