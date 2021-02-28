@@ -10,7 +10,7 @@ export default {
   components: {
     Map,
   },
-  async fetch() {
+  async asyncData() {
     // DSLAM LOADING
     let dslam = await axios
       .get("https://api.fttx.gr/api/v1/centers?limit=0&approved=true")
@@ -19,9 +19,6 @@ export default {
     return {
       dslam: dslam.data.data,
     };
-  },
-  asyncData() {
-    return fetch();
   },
 };
 </script>
