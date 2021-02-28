@@ -104,18 +104,7 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     "@nuxtjs/tailwindcss"
   ],
-  // axios: {
-  //   proxy: true
-  // },
-  // proxy: {
-  //   "/api": {
-  //     target: "https://api.fttx.gr/api",
-  //     // target: "http://localhost:5000/api",
-  //     pathRewrite: {
-  //       "^/api": "/"
-  //     }
-  //   }
-  // },
+
   sitemap: {
     hostname: "https://fttx.gr"
   },
