@@ -128,7 +128,7 @@ export default {
     rtl: false,
   },
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {},
+  build: { transpile: [/^vue2-google-maps($|\/)/] },
   env: {
     VUE_APP_GOOGLE_MAPS_API_KEY:
       process.env.NODE_ENV === "development"

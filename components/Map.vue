@@ -16,13 +16,6 @@
         @closeclick="infoWinOpen = false"
       ></gmap-info-window>
 
-      <!-- <cluster> -->
-      <!-- <Gmap-Marker
-        v-for="(marker, index) in markers"
-        :key="index"
-        :position="marker.position"
-        @click="markerInfo(marker, index)"
-      ></Gmap-Marker>-->
       <Gmap-Marker
         @dragend="updateCoordinates"
         v-if="this.place"
@@ -34,7 +27,7 @@
         :draggable="true"
         :icon="{ url: require('../static/img/g-marker.png') }"
       ></Gmap-Marker>
-      <!-- </cluster> -->
+
       <gmap-polygon :options="polygonOptions" :paths="paths"></gmap-polygon>
     </GmapMap>
     <!-- "top: 0; right: 0; width: calc(100% - 100px); position: absolute; z-index: 100" -->
@@ -133,13 +126,21 @@
       </div>
     </div>
 
-    <!-- <div v-if="debugging" style="z-index: 999;">
+    <div v-if="debugging" style="z-index: 999">
       <div
-        style="max-width: 800px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between"
+        style="
+          max-width: 800px;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        "
       >
         <div>
           <h1>Your coordinates:</h1>
-          <p>{{ myCoordinates.lat }} Latitude, {{ myCoordinates.lng }} Longitude</p>
+          <p>
+            {{ myCoordinates.lat }} Latitude, {{ myCoordinates.lng }} Longitude
+          </p>
         </div>
         <div>
           <h1>Map coordinates:</h1>
@@ -149,7 +150,7 @@
           </p>
         </div>
       </div>
-    </div>-->
+    </div>
     <div
       class="relative invisible h-48 rounded w-36 left-2 lg:visible xl:visible"
       style="position: relative; top: 250px; z-index: 999"
@@ -206,7 +207,7 @@ import { clusterStyle, mapStyle } from "../static/options";
 import borders from "../static/borders";
 
 export default {
-  props: ["dslam", "cabinetData"],
+  props: ["dslam"],
   data() {
     return {
       cabinetData: null,
