@@ -16,25 +16,18 @@
         @closeclick="infoWinOpen = false"
       ></gmap-info-window>
 
-      <!-- <cluster> -->
-      <!-- <Gmap-Marker
-        v-for="(marker, index) in markers"
-        :key="index"
-        :position="marker.position"
-        @click="markerInfo(marker, index)"
-      ></Gmap-Marker>-->
       <Gmap-Marker
         @dragend="updateCoordinates"
         v-if="this.place"
         @click="showInfo()"
         :position="{
           lat: this.place.geometry.location.lat(),
-          lng: this.place.geometry.location.lng()
+          lng: this.place.geometry.location.lng(),
         }"
         :draggable="true"
         :icon="{ url: require('../static/img/g-marker.png') }"
       ></Gmap-Marker>
-      <!-- </cluster> -->
+
       <gmap-polygon :options="polygonOptions" :paths="paths"></gmap-polygon>
     </GmapMap>
     <!-- "top: 0; right: 0; width: calc(100% - 100px); position: absolute; z-index: 100" -->
@@ -69,7 +62,7 @@
           "
           :class="[
             buttons.ote.isOn ? 'bg-blue-300' : 'bg-blue-700',
-            finishedLoading ? '' : 'opacity-50 cursor-not-allowed'
+            finishedLoading ? '' : 'opacity-50 cursor-not-allowed',
           ]"
           style="position: fixed; z-index: 999; bottom: 600px"
           class="px-4 py-2 font-bold text-white rounded hover:bg-blue-500"
@@ -87,7 +80,7 @@
           "
           :class="[
             buttons.wind.isOn ? 'bg-blue-400' : 'bg-blue-500',
-            finishedLoading ? '' : 'opacity-50 cursor-not-allowed'
+            finishedLoading ? '' : 'opacity-50 cursor-not-allowed',
           ]"
           style="position: fixed; z-index: 999; bottom: 550px"
           class="px-4 py-2 font-bold text-white rounded hover:bg-blue-400"
@@ -105,7 +98,7 @@
           "
           :class="[
             buttons.vf.isOn ? 'bg-red-300' : 'bg-red-700',
-            finishedLoading ? '' : 'opacity-50 cursor-not-allowed'
+            finishedLoading ? '' : 'opacity-50 cursor-not-allowed',
           ]"
           style="position: fixed; z-index: 999; bottom: 500px"
           class="px-4 py-2 font-bold text-white rounded hover:bg-red-500"
@@ -123,7 +116,7 @@
           "
           :class="[
             buttons.rurcon.isOn ? 'bg-orange-300' : 'bg-orange-800',
-            finishedLoading ? '' : 'opacity-50 cursor-not-allowed'
+            finishedLoading ? '' : 'opacity-50 cursor-not-allowed',
           ]"
           style="position: fixed; z-index: 999; bottom: 450px"
           class="px-4 py-2 font-bold text-white rounded hover:bg-orange-700"
@@ -133,13 +126,21 @@
       </div>
     </div>
 
-    <!-- <div v-if="debugging" style="z-index: 999;">
+    <div v-if="debugging" style="z-index: 999">
       <div
-        style="max-width: 800px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between"
+        style="
+          max-width: 800px;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        "
       >
         <div>
           <h1>Your coordinates:</h1>
-          <p>{{ myCoordinates.lat }} Latitude, {{ myCoordinates.lng }} Longitude</p>
+          <p>
+            {{ myCoordinates.lat }} Latitude, {{ myCoordinates.lng }} Longitude
+          </p>
         </div>
         <div>
           <h1>Map coordinates:</h1>
@@ -149,10 +150,10 @@
           </p>
         </div>
       </div>
-    </div>-->
+    </div>
     <div
       class="relative invisible h-48 rounded w-36 left-2 lg:visible xl:visible"
-      style="position: relative; top: 250px; z-index: 999;"
+      style="position: relative; top: 250px; z-index: 999"
     >
       <div
         class="flex flex-col justify-around h-48 p-6 bg-white rounded shadow-md w-36 justify-items-center"
@@ -206,37 +207,38 @@ import { clusterStyle, mapStyle } from "../static/options";
 import borders from "../static/borders";
 
 export default {
-  props: ["dslam", "cabinetData"],
+  props: ["dslam"],
   data() {
     return {
+      cabinetData: null,
       isLoading: false,
       fullPage: true,
       map: null,
       myCoordinates: {
         lat: 37.9432,
-        lng: 23.6709
+        lng: 23.6709,
       },
       zoom: 10,
       options: {
-        styles: mapStyle
+        styles: mapStyle,
       },
       buttons: {
         ote: {
           isOn: false,
-          text: "OTE"
+          text: "OTE",
         },
         wind: {
           isOn: false,
-          text: "WIND"
+          text: "WIND",
         },
         vf: {
           isOn: false,
-          text: "Vodafone"
+          text: "Vodafone",
         },
         rurcon: {
           isOn: false,
-          text: "Rural Connect"
-        }
+          text: "Rural Connect",
+        },
       },
       storedMarkers: [],
       markerCluster: null,
@@ -248,7 +250,7 @@ export default {
         strokeOpacity: 0.8,
         strokeWeight: 2,
         fillColor: "#FF0000",
-        fillOpacity: 0.01
+        fillOpacity: 0.01,
       },
       markers: [],
       place: null,
@@ -261,26 +263,33 @@ export default {
         //optional: offset infowindow so it visually sits nicely on top of our marker
         pixelOffset: {
           width: 0,
-          height: -35
-        }
+          height: -35,
+        },
       },
       markerIcons: {
         Vodafone: require("../static/img/vf-marker-minified.png"),
         OTE: require("../static/img/ote-marker-minified.png"),
         WIND: require("../static/img/wind-marker-minified.png"),
-        RURALCONNECT: require("../static/img/rurcon-marker-minified.png")
+        RURALCONNECT: require("../static/img/rurcon-marker-minified.png"),
       },
       markedMarker: null,
       hamburger: false,
       finishedLoading: false,
       cabinetQuery: null,
       numberOfCabinets: 0,
-      numberOfCenters: 0
+      numberOfCenters: 0,
     };
   },
   components: {
     Loading,
-    AnimatedNumber
+    AnimatedNumber,
+  },
+  async fetch() {
+    const results = await axios
+      .get(`https://api.fttx.gr/api/v1/cabinets?limit=0&approved=true`)
+      .then((r) => r);
+    const cabinets = results.data.data.filter((d) => d.type !== "DSLAM");
+    this.cabinetData = cabinets;
   },
   created() {
     // does the user have a saved center? use it instead of the default
@@ -289,10 +298,10 @@ export default {
     } else {
       // get user's coordinates from browser request
       this.$getLocation({})
-        .then(coordinates => {
+        .then((coordinates) => {
           this.myCoordinates = coordinates;
         })
-        .catch(error => alert(error));
+        .catch((error) => alert(error));
     }
 
     // does the user have a saved zoom? use it instead of the default
@@ -305,23 +314,23 @@ export default {
     let ref = this;
 
     // add the map to a data object
-    await this.$refs.mapRef.$mapPromise.then(map => (this.map = map));
-    this.$root.$on("hamburgerState", state => {
+    await this.$refs.mapRef.$mapPromise.then((map) => (this.map = map));
+    this.$root.$on("hamburgerState", (state) => {
       this.hamburger = state;
     });
 
-    this.dslam.forEach(d => {
+    this.dslam.forEach((d) => {
       d.infoText = `NAME: <strong><b>${d.name}</b></strong><br>Center ID: <strong><b>${d.id}</b></strong><br>Center Database ID: ${d._id}`;
       const marker = new google.maps.Marker({
         position: d.position,
         map: this.map,
-        icon: require("../static/img/ote-marker-center-minified.png")
+        icon: require("../static/img/ote-marker-center-minified.png"),
       });
       marker.db = d;
       const infowindow = new google.maps.InfoWindow({
-        content: d.infoText
+        content: d.infoText,
       });
-      marker.addListener("click", function() {
+      marker.addListener("click", function () {
         this.showInfo;
         infowindow.open(this.map, marker);
       });
@@ -329,7 +338,7 @@ export default {
     });
     this.clusterMyMarkers();
     // DSLAM LOADING END -- POLYGON LOADING START
-    borders.forEach(e => {
+    borders.forEach((e) => {
       let storedPoly = new google.maps.Polygon({
         paths: e[0],
         strokeColor: "#FFF",
@@ -337,7 +346,7 @@ export default {
         strokeWeight: 2,
         fillColor: "#FFF",
         fillOpacity: 0,
-        map: this.map
+        map: this.map,
       });
       this.polygons.push(storedPoly);
       this.paths.push(e[0]);
@@ -350,21 +359,21 @@ export default {
         const cabId = window.location.href.split(cabQuery)[1];
         let c = await axios
           .get(`https://api.fttx.gr/api/v1/cabinets/${cabId}`)
-          .then(r => r);
+          .then((r) => r);
         c = c.data.data;
         const marker = new google.maps.Marker({
           position: c.position,
           map: this.map,
-          icon: this.markerIcons[c.isp]
+          icon: this.markerIcons[c.isp],
         });
         marker.db = c;
         ref.infoWindow(marker);
-        marker.addListener("click", function() {
+        marker.addListener("click", function () {
           ref.infoWindow(marker);
         });
         this.myCoordinates = {
           lat: c.position.lat,
-          lng: c.position.lng
+          lng: c.position.lng,
         };
         this.zoom = 17;
         this.cabinetQuery = cabId;
@@ -376,17 +385,17 @@ export default {
     this.numberOfCenters = this.dslam.length;
     // POLYGON LOADING END -- LOAD EVERYTHING ELSE BUT INVISIBLE (NOTE: This part here is what causing the initial lag spike because there's just too much data. Working on it.)
 
-    this.cabinetData.forEach(d => {
+    this.cabinetData.forEach((d) => {
       // check if a cabinet is queried and if it's stored in cabinetQuery, exclude it from loading because it's already loaded.
       if (this.cabinetQuery && d._id === this.cabinetQuery) return;
       const marker = new google.maps.Marker({
         position: d.position,
         map: this.map,
-        icon: this.markerIcons[d.isp]
+        icon: this.markerIcons[d.isp],
       });
       marker.setVisible(false);
       marker.db = d;
-      marker.addListener("click", function() {
+      marker.addListener("click", function () {
         ref.infoWindow(marker);
       });
       this.markers.push(marker);
@@ -405,14 +414,14 @@ export default {
         ote: "OTE",
         wind: "WIND",
         vf: "Vodafone",
-        rurcon: "RURALCONNECT"
+        rurcon: "RURALCONNECT",
       };
 
       if (this.buttons[cab].isOn) {
         let temp = [];
         if (this.storedMarkers.includes(format[cab])) {
-          const c = this.markers.filter(m => m.db.isp === format[cab]);
-          c.forEach(ca => {
+          const c = this.markers.filter((m) => m.db.isp === format[cab]);
+          c.forEach((ca) => {
             temp.push(ca);
             ca.setVisible(true);
           });
@@ -421,19 +430,19 @@ export default {
             .get(
               `https://api.fttx.gr/api/v1/cabinets?isp=${format[cab]}&limit=0&approved=true`
             )
-            .then(r => r);
+            .then((r) => r);
 
           this.storedMarkers.push(format[cab]);
-          c.data.data.forEach(d => {
-            const dslams = this.markers.filter(d => d.db.type === "DSLAM");
+          c.data.data.forEach((d) => {
+            const dslams = this.markers.filter((d) => d.db.type === "DSLAM");
             let ak;
             const marker = new google.maps.Marker({
               position: d.position,
               map: this.map,
-              icon: this.markerIcons[format[cab]]
+              icon: this.markerIcons[format[cab]],
             });
             marker.db = d;
-            marker.addListener("click", function() {
+            marker.addListener("click", function () {
               ref.infoWindow(marker);
             });
             this.markers.push(marker);
@@ -445,8 +454,8 @@ export default {
         // this.clusterMyMarkers();
       }
       if (!this.buttons[cab].isOn) {
-        let c = this.markers.filter(d => d.db.isp === format[cab]);
-        c.forEach(ca => {
+        let c = this.markers.filter((d) => d.db.isp === format[cab]);
+        c.forEach((ca) => {
           ca.setVisible(false);
         });
         this.clusterMyMarkers("clear");
@@ -459,11 +468,11 @@ export default {
         this.openInfoWindow = null;
       }
       let ak;
-      this.polygons.forEach(p => {
+      this.polygons.forEach((p) => {
         if (
           google.maps.geometry.poly.containsLocation(marker.getPosition(), p)
         ) {
-          this.markers.forEach(m => {
+          this.markers.forEach((m) => {
             if (m.db.name) {
               if (
                 google.maps.geometry.poly.containsLocation(m.getPosition(), p)
@@ -492,7 +501,7 @@ export default {
         marker.db._id
       }">URL to this Cabinet</a>`;
       const infowindow = new google.maps.InfoWindow({
-        content: text
+        content: text,
       });
       infowindow.open(this.map, marker);
       this.openInfoWindow = infowindow;
@@ -500,14 +509,14 @@ export default {
     clusterMyMarkers(action = "default") {
       const clusterOptions = {
         gridSize: 40,
-        maxZoom: 15
+        maxZoom: 15,
         // styles: clusterStyle,
       };
       if (action === "default") {
         if (!this.markerCluster) {
           this.markerCluster = new MarkerClusterer(
             this.map,
-            this.markers.filter(d => d.visible === true),
+            this.markers.filter((d) => d.visible === true),
             clusterOptions
           );
         } else {
@@ -515,13 +524,13 @@ export default {
           this.markerCluster = null;
           this.markerCluster = new MarkerClusterer(
             this.map,
-            this.markers.filter(d => d.visible === true),
+            this.markers.filter((d) => d.visible === true),
             clusterOptions
           );
         }
       } else if (action === "clear") {
         this.markerCluster.removeMarkers(
-          this.markers.filter(d => d.visible === false)
+          this.markers.filter((d) => d.visible === false)
         );
       }
     },
@@ -529,7 +538,7 @@ export default {
       if (this.markedMarker) {
         const pos = {
           lat: this.markedMarker.position.lat(),
-          lng: this.markedMarker.position.lng()
+          lng: this.markedMarker.position.lng(),
         };
         localStorage.add = JSON.stringify(pos);
       }
@@ -540,7 +549,7 @@ export default {
     setPlace(place) {
       this.myCoordinates = {
         lat: place.geometry.location.lat(),
-        lng: place.geometry.location.lng()
+        lng: place.geometry.location.lng(),
       };
       this.zoom = 18;
       this.place = place;
@@ -550,9 +559,9 @@ export default {
         this.markers.push({
           position: {
             lat: this.place.geometry.location.lat(),
-            lng: this.place.geometry.location.lng()
+            lng: this.place.geometry.location.lng(),
           },
-          infoText: this.place.formatted_address
+          infoText: this.place.formatted_address,
         });
         this.place = null;
       }
@@ -570,7 +579,7 @@ export default {
       // get center and zoom level, store in localstorage
       let center = {
         lat: this.map.getCenter().lat(),
-        lng: this.map.getCenter().lng()
+        lng: this.map.getCenter().lng(),
       };
       let zoom = this.map.getZoom();
 
@@ -594,7 +603,7 @@ export default {
     showInfo() {
       const position = {
         lat: this.place.geometry.location.lat(),
-        lng: this.place.geometry.location.lng()
+        lng: this.place.geometry.location.lng(),
       };
       this.infoWindowPos = position;
       this.infoWinOpen = !this.infoWinOpen;
@@ -629,33 +638,27 @@ export default {
         cabinet.db._id
       }<br>Address of Cabinet: ${cabinet.db.address.full}</a>`;
       this.markedMarker = cabinet;
-    }
+    },
   },
   computed: {
     mapCoordinates() {
       if (!this.map) {
         return {
           lat: 0,
-          lng: 0
+          lng: 0,
         };
       }
 
       return {
-        lat: this.map
-          .getCenter()
-          .lat()
-          .toFixed(4),
-        lng: this.map
-          .getCenter()
-          .lng()
-          .toFixed(4)
+        lat: this.map.getCenter().lat().toFixed(4),
+        lng: this.map.getCenter().lng().toFixed(4),
       };
-    }
+    },
   },
   async created() {
     const ref = this;
     //
-  }
+  },
 };
 </script>
 
