@@ -284,13 +284,7 @@ export default {
     Loading,
     AnimatedNumber,
   },
-  async fetch() {
-    const results = await axios
-      .get(`https://api.fttx.gr/api/v1/cabinets?limit=0&approved=true`)
-      .then((r) => r);
-    const cabinets = results.data.data.filter((d) => d.type !== "DSLAM");
-    this.cabinetData = cabinets;
-  },
+  async fetch() {},
   created() {
     // does the user have a saved center? use it instead of the default
     if (localStorage.center) {
@@ -381,6 +375,13 @@ export default {
     }
     // cabinet query end
     this.isLoading = false;
+    // CABINET LOAD
+    const results = await axios
+      .get(`https://api.fttx.gr/api/v1/cabinets?limit=0&approved=true`)
+      .then((r) => r);
+    const cabinets = results.data.data.filter((d) => d.type !== "DSLAM");
+    this.cabinetData = cabinets;
+    // CABINET LOAD END
     this.numberOfCabinets = this.cabinetData.length;
     this.numberOfCenters = this.dslam.length;
     // POLYGON LOADING END -- LOAD EVERYTHING ELSE BUT INVISIBLE (NOTE: This part here is what causing the initial lag spike because there's just too much data. Working on it.)
@@ -400,6 +401,7 @@ export default {
       });
       this.markers.push(marker);
     });
+
     this.$toast.info("Loading cabinets...");
     this.storedMarkers.push("OTE");
     this.storedMarkers.push("Vodafone");
