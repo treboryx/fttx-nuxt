@@ -1,33 +1,33 @@
 <template>
   <div>
-    <div class="md:flex md:justify-center mb-6 flex justify-center mt-8">
+    <div class="flex justify-center mt-8 mb-6 md:flex md:justify-center">
       <form class="w-5/6 max-w-lg" @submit.prevent="submit">
-        <div class="flex flex-wrap -mx-3 mb-6">
-          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <div class="flex flex-wrap mb-6 -mx-3">
+          <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
             <label
-              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
               for="grid-id"
               >Cabinet ID</label
             >
             <input
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+              class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none focus:outline-none focus:bg-white"
               id="grid-id"
               type="number"
               required
               v-model="id"
             />
             <!-- border-red-500 -->
-            <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
+            <!-- <p class="text-xs italic text-red-500">Please fill out this field.</p> -->
           </div>
-          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
             <label
-              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
               for="grid-isp"
               >ISP</label
             >
             <div class="relative">
               <select
-                class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-isp"
                 required
                 v-model="isp"
@@ -38,10 +38,10 @@
                 <option>RURALCONNECT</option>
               </select>
               <div
-                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none"
               >
                 <svg
-                  class="fill-current h-4 w-4"
+                  class="w-4 h-4 fill-current"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                 >
@@ -53,66 +53,66 @@
             </div>
           </div>
         </div>
-        <div class="flex flex-wrap -mx-3 mb-6">
-          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <div class="flex flex-wrap mb-6 -mx-3">
+          <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
             <label
-              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
               for="grid-lat"
               >Latitude</label
             >
             <input
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+              class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none focus:outline-none focus:bg-white"
               id="grid-lat"
               type="number"
               step="any"
               v-model="lat"
             />
             <!-- border-red-500 -->
-            <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
+            <!-- <p class="text-xs italic text-red-500">Please fill out this field.</p> -->
           </div>
-          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
             <label
-              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
               for="grid-lng"
               >Longtitude</label
             >
             <input
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+              class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none focus:outline-none focus:bg-white"
               id="grid-lng"
               type="number"
               step="any"
               v-model="lng"
             />
             <!-- border-red-500 -->
-            <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
+            <!-- <p class="text-xs italic text-red-500">Please fill out this field.</p> -->
           </div>
         </div>
-        <div class="flex flex-wrap -mx-3 mb-6">
-          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <div class="flex flex-wrap mb-6 -mx-3">
+          <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
             <label
-              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
               for="grid-img"
               >Image URL</label
             >
             <input
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+              class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none focus:outline-none focus:bg-white"
               id="grid-img"
               type="text"
               placeholder="Ex. https://imgur.com/"
               v-model="img"
             />
             <!-- border-red-500 -->
-            <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
+            <!-- <p class="text-xs italic text-red-500">Please fill out this field.</p> -->
           </div>
-          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
             <label
-              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
               for="grid-type"
               >Type</label
             >
             <div class="relative">
               <select
-                class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-type"
                 required
                 v-model="type"
@@ -123,10 +123,10 @@
                 <option>RURALCONNECT</option>
               </select>
               <div
-                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none"
               >
                 <svg
-                  class="fill-current h-4 w-4"
+                  class="w-4 h-4 fill-current"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                 >
@@ -138,29 +138,29 @@
             </div>
           </div>
         </div>
-        <div class="flex flex-wrap -mx-3 mb-2">
-          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <div class="flex flex-wrap mb-2 -mx-3">
+          <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
             <label
-              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
               for="grid-name"
               >Your name</label
             >
             <input
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-name"
               type="text"
               placeholder="Optional"
               v-model="name"
             />
           </div>
-          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
             <label
-              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
               for="grid-email"
               >Email</label
             >
             <input
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-email"
               type="text"
               placeholder="Optional"
@@ -170,7 +170,7 @@
         </div>
         <button
           type="submit"
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-5"
+          class="px-4 py-2 m-5 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
         >
           Submit
         </button>
@@ -188,6 +188,18 @@ export default {
         {
           hid: "description",
           name: "description",
+          content:
+            "Add a FTTx cabinet in the map and contribute to the database"
+        },
+        {
+          hid: "twitter:description",
+          name: "twitter:description",
+          content:
+            "Add a FTTx cabinet in the map and contribute to the database"
+        },
+        {
+          hid: "og:description",
+          property: "og:description",
           content:
             "Add a FTTx cabinet in the map and contribute to the database"
         }
