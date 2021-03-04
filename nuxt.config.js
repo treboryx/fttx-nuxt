@@ -22,7 +22,7 @@ export default {
       {
         name: "keywords",
         content:
-          "fttx, fttc, ftth, greece, athens, OTE, WIND, Vodafone, Rural Connect, Έλεγχος διαθεσιμότητας VDSL Ελλάδα, ftth αιτηση, fttx infrastructure, fttx map, ftth διαδικασια, fiber, οπτικη ινα"
+          "fttx, fttc, ftth, greece, athens, OTE, WIND, Vodafone, Rural Connect, Έλεγχος διαθεσιμότητας VDSL Ελλάδα, ftth αιτηση, fttx infrastructure, fttx map, ftth διαδικασια, fiber, οπτικη ινα, kafao map, καφαο χαρτης, καμπινες, χαρτης δικτυου"
       },
       {
         name: "author",
