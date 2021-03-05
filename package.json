@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@nuxtjs/sitemap": "^2.4.0",
-    "@tailwindcss/ui": "^0.6.2",
+    "@tailwindcss/ui": "^0.7.2",
     "animated-number-vue": "^1.0.0",
     "axios": "^0.21.0",
     "core-js": "^3.6.5",
