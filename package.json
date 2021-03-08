@@ -14,7 +14,7 @@
     "@tailwindcss/ui": "^0.6.2",
     "animated-number-vue": "^1.0.0",
     "axios": "^0.21.0",
-    "core-js": "^3.6.5",
+    "core-js": "^3.9.1",
     "marker-clusterer-plus": "^2.1.4",
     "nuxt": "^2.14.7",
     "vue-browser-geolocation": "^1.8.0",
